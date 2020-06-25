@@ -33,6 +33,7 @@ class Character(models.Model):
     attack = models.IntegerField()
     health = models.IntegerField()
     ability = models.CharField(max_length=20)
+    backpack = {}
     user = models.OneToOneField(User, related_name="characters", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
