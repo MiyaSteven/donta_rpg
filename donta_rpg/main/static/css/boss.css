@@ -158,11 +158,6 @@ label:hover{
     margin-left: auto;
     margin-right: auto;
 }
-.modal-row{
-    display: inline-flex;
-    justify-content: space-between;
-    background-color: #242424;
-}
 form button{
     margin-top: 30px;
 }

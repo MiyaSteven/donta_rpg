@@ -8,6 +8,10 @@
 	<div>
 		<div id='world'></div>
 		<div id = 'donta'></div>
+<<<<<<< HEAD
+		<div id = 'score'>Score: <span id = 'score-count'>0</span></div>
+=======
+>>>>>>> master
 		<div id = 'droma1'></div>
 		<div id = 'droma2'></div>
         <div id = 'droma3'></div>
@@ -41,11 +45,12 @@
 	
 	// WORLD DICTIONARY
 	var worldDict = {
-		0: 'blank',
+		0: 'grass',
 		1: 'fruit',
         2: 'wall',
         3: 'breakable_rock',
-        4: 'solid_rock'
+		4: 'solid_rock',
+		5: 'dirt'
 	}
 	
 	// RENDER WORLD
@@ -224,6 +229,15 @@
 	draw_droma4();
 
 	var dromaList = [ droma1, droma2, droma3, droma4 ];
+
+	
+	// SCORE KEEPING
+	var gameScore = 0;	
+	function keepScore(){
+		var currentScore = document.getElementById('score-count');
+		currentScore.innerHTML = gameScore;
+	}
+
 	
 	// Movement 	
 	function updateAgents(e){
@@ -239,7 +253,8 @@
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
-                            world[donta_pos.y][donta_pos.x - 1] = 0;
+							world[donta_pos.y][donta_pos.x - 1] = 0;
+							gameScore += 20;
                             break;
                         // solid rock
                         case 4: 
@@ -260,7 +275,8 @@
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
-                            world[donta_pos.y][donta_pos.x + 1] = 0;
+							world[donta_pos.y][donta_pos.x + 1] = 0;
+							gameScore += 20;
                             break;
                         // solid rock
                         case 4: 
@@ -281,7 +297,8 @@
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
-                            world[donta_pos.y - 1][donta_pos.x] = 0;
+							world[donta_pos.y - 1][donta_pos.x] = 0;
+							gameScore += 20;
                             break;
                         // solid rock
                         case 4: 
@@ -302,7 +319,8 @@
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
-                            world[donta_pos.y + 1][donta_pos.x] = 0;
+							world[donta_pos.y + 1][donta_pos.x] = 0;
+							gameScore += 20;
                             break;
                         // solid rock
                         case 4: 
@@ -323,7 +341,8 @@
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
-                            world[donta_pos.y - 1][donta_pos.x - 1] = 0;
+							world[donta_pos.y - 1][donta_pos.x - 1] = 0;
+							gameScore += 20;
                             break;
                         // solid rock
                         case 4: 
@@ -343,7 +362,8 @@
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
-                            world[donta_pos.y - 1][donta_pos.x + 1] = 0;
+							world[donta_pos.y - 1][donta_pos.x + 1] = 0;
+							gameScore += 20;
                             break;
                         // solid rock
                         case 4: 
@@ -363,7 +383,8 @@
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
-                            world[donta_pos.y + 1][donta_pos.x - 1 ] = 0;
+							world[donta_pos.y + 1][donta_pos.x - 1 ] = 0;
+							gameScore += 20;
                             break;
                         // solid rock
                         case 4: 
@@ -383,7 +404,8 @@
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
-                            world[donta_pos.y + 1][donta_pos.x + 1] = 0;
+							world[donta_pos.y + 1][donta_pos.x + 1] = 0;
+							gameScore += 20;
                             break;
                         // solid rock
                         case 4: 
@@ -460,11 +482,19 @@
                 if (currentDroma.health <= 0) {
                     // enemy dead, remove from list
                     document.getElementById(currentDroma.name).style.backgroundImage = 'none';
-                    dromaList = dromaList.filter(droma => droma.name !== currentDroma.name);
+					dromaList = dromaList.filter(droma => droma.name !== currentDroma.name);
+					gameScore += 50;
                 }
 
 			}
-        }
+		}
+		
+		// score
+		if((world[donta_pos.y][donta_pos.x]) == 1){
+			gameScore += 10;
+		}
+		world[donta_pos.y][donta_pos.x] = 0;	
+
         // check to see if player won
         if (dromaList.length == 0) {
             alert("You win!")
@@ -475,8 +505,8 @@
 		
 		drawdonta_pos();
 		drawWorld();
+		keepScore();
 	}
-
 
 
     </script>
