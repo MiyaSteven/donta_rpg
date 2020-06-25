@@ -16,5 +16,6 @@ urlpatterns = [
     path('main-game', views.main_game),
     path('character', views.character_select),
     path('shop', views.shop),
-    path('logout', views.logout)
+    path('logout', views.logout),
+    path('submit-score', views.submit_score)
 ]
