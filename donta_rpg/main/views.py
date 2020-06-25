@@ -61,6 +61,7 @@ def chosen_create_character(request):
         attack=request.POST['attack'],
         health=request.POST['health'],
         ability=request.POST['ability'],
+        link=request.POST['link'],
         user=user,
     )
     return redirect('/dashboard')
