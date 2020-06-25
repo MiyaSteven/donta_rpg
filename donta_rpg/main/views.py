@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.contrib import messages
 from .models import User, Character, Item, Obstacle
 from datetime import datetime
@@ -19,7 +20,8 @@ def register(request):
         last_name=request.POST['last_name'],
         email=request.POST['email'],
         password=hashed,
-        confirm_password=hashed
+        confirm_password=hashed,
+        score=0
     )
     request.session['user_id'] = this_user.id
     return redirect('/dashboard')
@@ -120,7 +122,27 @@ def edit(request):
 # test code to view Other Pages
 
 def game(request):
-    return render(request, 'game.html')
+    if not request.session['user_id']:
+        return redirect('/')
+
+    current_user = User.objects.get(id=request.session['user_id'])
+
+    context = {
+        'current_score': current_user.score
+    }
+    
+    return render(request, 'game.html', context)
+
+def submit_score(request):
+    current_user = User.objects.get(id=request.session['user_id'])
+
+    new_score = request.POST['score']
+
+    current_user.score = new_score
+
+    current_user.save()
+
+    return JsonResponse({'code':200})
 
 def boss(request):
     return render(request, 'boss.html')

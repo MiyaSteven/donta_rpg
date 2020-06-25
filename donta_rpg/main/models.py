@@ -26,6 +26,7 @@ class User(models.Model):
     chosen_one = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)   
     updated_at = models.DateTimeField(auto_now=True)
+    score = models.IntegerField()
     objects = UserManager()
 
 class Character(models.Model):
