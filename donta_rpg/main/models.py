@@ -31,16 +31,17 @@ class User(models.Model):
 
 class Character(models.Model):
     name = models.CharField(max_length=20)
-    ability = models.CharField(max_length=20)
-    attack = models.CharField(max_length=20)
+    attack = models.IntegerField()
     health = models.IntegerField()
-    user = models.ForeignKey(User, related_name="character", on_delete = models.CASCADE)
+    ability = models.CharField(max_length=20)
+    user = models.OneToOneField(User, related_name="characters", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 class Item(models.Model):
     item_name = models.CharField(max_length=20)
-    item_effect = models.CharField(max_length=255)
+    attack = models.IntegerField()
+    health = models.IntegerField()    
     special_ability = models.CharField(max_length=255)
     character = models.ForeignKey(Character, related_name="item", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -49,6 +50,14 @@ class Item(models.Model):
 class Obstacle(models.Model):
     obstacle_name = models.CharField(max_length=20)
     health = models.IntegerField()
-    item = models.ForeignKey(Item, related_name="obstacle", on_delete = models.CASCADE)
+    item = models.ForeignKey(Item, related_name="obstacles", on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Enemy(models.Model):
+    name = models.CharField(max_length=20)
+    attack = models.IntegerField()
+    health = models.IntegerField()
+    enemy_ability = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
