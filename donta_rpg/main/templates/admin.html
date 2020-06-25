@@ -19,6 +19,8 @@
         <input type="number" name="attack" id="attack"><br>
         <label for="health">Health:</label>
         <input type="number" name="health" id="health"><br>
+        <label for="link">Url:</label>
+        <input type="url" name="link" id="link"><br>
         <input type="submit" value="Submit">
     </form>
     <form action="/create/item" method="POST">
@@ -26,10 +28,14 @@
         <h2>Create an Item</h2>
         <label for="item_name">Title:</label>
         <input type="text" name="item_name" id="item_name"><br>
-        <label for="item_effect">Item Effect on Character Stats:</label>
-        <input type="text" name="item_effect" id="item_effect"><br>
+        <label for="attack">Attack:</label>
+        <input type="text" name="attack" id="attack"><br>
+        <label for="health">health:</label>
+        <input type="text" name="health" id="health"><br>
         <label for="special_ability">Special Ability:</label>
         <input type="text" name="special_ability" id="special_ability"><br>
+        <label for="link">Url:</label>
+        <input type="url" name="link" id="link"><br>
         <input type="submit" value="Submit">
     </form>
     <form action="/create/obstacle" method="POST">
@@ -39,8 +45,23 @@
         <input type="text" name="obstacle_name" id="obstacle_name"><br>
         <label for="health">Health:</label>
         <input type="text" name="health" id="health"><br>
+        <label for="link">Url:</label>
+        <input type="url" name="link" id="link"><br>
         <input type="submit" value="Submit">
     </form>
-    <a href="/character">Return to Select Character</a>
+    <form action="/create/enemy" method="POST">
+        {% csrf_token %}
+        <h2>Create an Enemy</h2>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name"><br>
+        <label for="attack">Attack:</label>
+        <input type="text" name="attack" id="attack"><br>
+        <label for="health">Health:</label>
+        <input type="number" name="health" id="health"><br>
+        <label for="link">Url:</label>
+        <input type="url" name="link" id="link"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/dashboard">Return to dashboard</a>
 </body>
 </html>
