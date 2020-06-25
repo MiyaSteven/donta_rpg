@@ -28,7 +28,7 @@ header{
 .nav_links li{
     text-align: center;
     display: inline-block;
-    padding: 0px 20px;
+    padding: 0px 30px;
 }
 .nav_links li a{
     transition: all 0.3s ease 0s;
@@ -129,9 +129,6 @@ hr{
 .buy-gear p{
     margin-top: 5px;
 }
-
-
-
 .shop{
     background-color: #555555;
     float: right;

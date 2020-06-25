@@ -91,3 +91,20 @@ def chosen_create_obstacle(request):
 def logout(request):
     request.session.clear()
     return redirect('/')
+
+
+# test code to view Other Pages
+def game(request):
+    return render(request, 'game.html')
+
+def boss(request):
+    return render(request, 'boss.html')
+
+def main_game(request):
+    return render(request, 'game2.html')
+    
+def player(request):
+    return render(request, 'character_detail.html')
+
+def shop(request):
+    return render(request, 'shop.html')
