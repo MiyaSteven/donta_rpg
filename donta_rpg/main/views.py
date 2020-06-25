@@ -102,10 +102,10 @@ def select(request):
     }
     return render(request, "select.html", context)
 
-def get_character(request, character_id):
-    character = Character.get(id=character_id)
+# def get_character(request, character_id):
+#     character = Character.get(id=character_id)
 
-    return render(request, '')
+#     return render(request, '')
 
 def edit(request):
     request.session['job_id'] = request.POST['job_id']

@@ -26,6 +26,8 @@ class User(models.Model):
     chosen_one = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)   
     updated_at = models.DateTimeField(auto_now=True)
+    score = models.IntegerField()
+    coins = models.IntegerField()
     objects = UserManager()
 
 class Character(models.Model):
@@ -33,7 +35,6 @@ class Character(models.Model):
     attack = models.IntegerField()
     health = models.IntegerField()
     ability = models.CharField(max_length=20)
-    backpack = {}
     user = models.OneToOneField(User, related_name="characters", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -44,7 +45,7 @@ class Item(models.Model):
     health = models.IntegerField()    
     special_ability = models.CharField(max_length=255)
     link = models.CharField(max_length=255)
-    character = models.ForeignKey(Character, related_name="item", on_delete = models.CASCADE)
+    character = models.ForeignKey(Character, related_name="items", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
