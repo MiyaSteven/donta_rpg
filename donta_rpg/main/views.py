@@ -109,9 +109,6 @@ def select(request):
 def game(request):
     return render(request, 'game.html')
 
-def select(request):
-    return render(request, 'select.html')
-
 def boss(request):
     return render(request, 'boss.html')
 
