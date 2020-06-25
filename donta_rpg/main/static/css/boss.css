@@ -142,6 +142,8 @@ img{
     width: 90px;
 }
 label{
+    margin-left: 10px;
+    margin-right: 10px;
     transition: .5s;
     color: gray;
 }
