@@ -142,6 +142,8 @@ img{
     width: 90px;
 }
 label{
+    margin-left: 10px;
+    margin-right: 10px;
     transition: .5s;
     color: gray;
 }
@@ -155,6 +157,11 @@ label:hover{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+.modal-row{
+    display: inline-flex;
+    justify-content: space-between;
+    background-color: #242424;
 }
 form button{
     margin-top: 30px;
