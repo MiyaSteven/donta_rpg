@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 import re
 
 class UserManager(models.Manager):

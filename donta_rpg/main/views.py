@@ -124,6 +124,3 @@ def shop(request):
 def logout(request):
     request.session.clear()
     return redirect('/')
-
-def game(request):
-    return render(request, "game.html")
