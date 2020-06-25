@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="buy-gear">
-                <form action="">
+                <form action="/dashboard">
                     <h1>Scythe</h1>
                     <hr>
                     <img src="../static/Images/fruit.png" alt="">
@@ -67,7 +67,12 @@
                         <h3>+120</h3>
                     </div>
                     <h3 style="margin-top: 40px;">$40 coins</h3>
-                    <button>Buy</button>
+                    <button onclick="confirmation()">Buy</button>
+                    <script>
+                        function confirmation(){
+                            confirm("You bought this for free!");
+                        }
+                    </script>
                 </form>
             </div>
         </div>

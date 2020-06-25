@@ -14,7 +14,7 @@ urlpatterns = [
     path('game', views.game),
     path('boss', views.boss),
     path('main-game', views.main_game),
-    path('player', views.player),
+    path('character', views.character_select),
     path('shop', views.shop),
     path('logout', views.logout)
 ]
