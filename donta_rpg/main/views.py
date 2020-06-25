@@ -102,10 +102,23 @@ def select(request):
     }
     return render(request, "select.html", context)
 
-# def get_character(request, character_id):
-#     character = Character.get(id=character_id)
-#     return redirect('/game')
+def get_character(request, character_id):
+    character = Character.get(id=character_id)
+
+    return render(request, '')
+
+def edit(request):
+    request.session['job_id'] = request.POST['job_id']
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "user": User.objects.get(id=request.session['user_id']),
+        "job": Job.objects.get(id=request.session['job_id'])
+    }
+    return render(request, 'edit.html', context)
+
 # test code to view Other Pages
+
 def game(request):
     return render(request, 'game.html')
 
@@ -115,8 +128,8 @@ def boss(request):
 def main_game(request):
     return render(request, 'game2.html')
     
-def player(request):
-    return render(request, 'character_detail.html')
+def character_select(request):
+    return render(request, 'character_select.html')
 
 def shop(request):
     return render(request, 'shop.html')

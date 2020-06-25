@@ -11,7 +11,7 @@
 <body>
     <main>
         <div>
-            <form action="/character_detail">
+            <form action="/character_select">
                 {% csrf_token %}
                 <h1>Character Select</h1>
                 <hr>
@@ -20,7 +20,7 @@
                         <input type="radio" name="test" value="small" checked>
                         <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
                     </label>
-                    <label class="col-sm">
+                    <!-- <label class="col-sm">
                         <input type="radio" name="test" value="big">
                         <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
                     </label>
@@ -48,7 +48,7 @@
                         <input type="radio" name="test" value="big">
                         <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
                     </label>
-                </div>
+                </div> -->
                 <div class="center">
                     <button type="submit">Select Character</button>
                 </div>
