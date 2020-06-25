@@ -11,4 +11,5 @@ urlpatterns = [
     path('create/character', views.chosen_create_character),
     path('create/item', views.chosen_create_item),
     path('create/obstacle', views.chosen_create_obstacle),
+    path('game', views.game),
 ]
