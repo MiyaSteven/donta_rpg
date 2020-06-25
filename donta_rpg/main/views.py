@@ -119,7 +119,7 @@ def main_game(request):
     return render(request, 'game2.html')
     
 def player(request):
-    return render(request, 'dashboard2.html')
+    return render(request, 'player_info.html')
 
 def shop(request):
     return render(request, 'shop.html')
