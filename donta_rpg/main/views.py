@@ -109,6 +109,9 @@ def select(request):
 def game(request):
     return render(request, 'game.html')
 
+def select(request):
+    return render(request, 'select.html')
+
 def boss(request):
     return render(request, 'boss.html')
 
@@ -116,7 +119,7 @@ def main_game(request):
     return render(request, 'game2.html')
     
 def player(request):
-    return render(request, 'character_detail.html')
+    return render(request, 'dashboard2.html')
 
 def shop(request):
     return render(request, 'shop.html')
