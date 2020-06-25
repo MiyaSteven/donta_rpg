@@ -13,21 +13,16 @@ body{
 }
 
 .background{
-    background: url('https://i.pinimg.com/originals/6e/58/c2/6e58c26ef08db759f7e1cb3faca5f7a8.jpg') no-repeat;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-}
-
-.background2{
     background: url('https://wallpapercave.com/wp/wp2611061.jpg') no-repeat;
     background-size: cover;
     height: 100vh;
     display: flex;
 }
 /* tacos are good */
-.text, .box{
-    margin-top: 45vh;
+.text,
+.box,
+.box2{
+    margin-top: 33vh;
     flex: 1;
 }
 
@@ -35,21 +30,21 @@ body{
     margin-left: 10%;
     font-weight: 300px;
 }
-
 .box{
-    margin-left: 30%;
+    margin-left: 10%;
 }
-
 .box2{
-    margin-top: 20vh;
+    margin-top: 15vh;
     flex: 1;
-    margin-left: 30%;
+    margin-left: 15%;
 }
-
 .text h1{
     font-size: 70px;
     color: #ffffff;
     font-weight: 500;
+}
+h1{
+    color: white;
 }
 
 .text p{
@@ -57,7 +52,6 @@ body{
     color: #ffffff;
     font-weight: 300;
 }
-
 .text p a{
     color: #ffffff;
     font-weight: 700;
@@ -82,7 +76,10 @@ input{
     font-family: 'Raleway', sans-serif;
 }
 
-.email, .name, .username, .password{
+.email,
+.name,
+.username,
+.password{
     border-bottom: 1px solid white;
 }
 
@@ -92,7 +89,6 @@ input[type=submit]{
     color: white;
     font-size: 18px;
 }
-
 input[type=submit]:hover{
     background-color: white;
     color: black;
