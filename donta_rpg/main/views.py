@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.contrib import messages
 from .models import User, Character, Item, Obstacle
 from datetime import datetime
@@ -19,7 +20,8 @@ def register(request):
         last_name=request.POST['last_name'],
         email=request.POST['email'],
         password=hashed,
-        confirm_password=hashed
+        confirm_password=hashed,
+        score=0
     )
     request.session['user_id'] = this_user.id
     return redirect('/dashboard')
@@ -59,6 +61,7 @@ def chosen_create_character(request):
         attack=request.POST['attack'],
         health=request.POST['health'],
         ability=request.POST['ability'],
+        link=request.POST['link'],
         user=user,
     )
     return redirect('/dashboard')
@@ -70,6 +73,7 @@ def chosen_create_item(request):
         attack=request.POST['attack'],
         health=request.POST['health'],
         special_ability=request.POST['special_ability'],
+        link=request.POST['link'],
         character=character,
     )
     request.session['item_id'] = this_item.id
@@ -80,6 +84,7 @@ def chosen_create_obstacle(request):
     Obstacle.objects.create(
         obstacle_name=request.POST['obstacle_name'],
         health=request.POST['health'],
+        link=request.POST['link'],
         item=item,
     )
     return redirect('/dashboard')
@@ -91,6 +96,7 @@ def chosen_create_enemy(request):
         attack=request.POST['attack'],
         health=request.POST['health'],
         ability=request.POST['ability'],
+        link=request.POST['link'],
     )
     return redirect('/dashboard')
 
@@ -102,24 +108,69 @@ def select(request):
     }
     return render(request, "select.html", context)
 
-# def get_character(request, character_id):
-#     character = Character.get(id=character_id)
-#     return redirect('/game')
-# test code to view Other Pages
+def edit(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "user": User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'edit.html', context)
+
 def game(request):
-    return render(request, 'game.html')
+    if not request.session['user_id']:
+        return redirect('/')
+
+    current_user = User.objects.get(id=request.session['user_id'])
+
+    context = {
+        'current_score': current_user.score
+    }
+    
+    return render(request, 'game.html', context)
+
+def submit_score(request):
+    current_user = User.objects.get(id=request.session['user_id'])
+    new_score = request.POST['score']
+    current_user.score = new_score
+    current_user.save()
+    return JsonResponse({'code':200})
 
 def boss(request):
-    return render(request, 'boss.html')
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "user": User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'boss.html', context)
 
 def main_game(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
     return render(request, 'game2.html')
     
-def player(request):
-    return render(request, 'character_detail.html')
+def character_select(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "all_characters": Character.objects.all(),
+    }
+    return render(request, 'character_select.html', context)
 
 def shop(request):
-    return render(request, 'shop.html')
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "all_items": Item.objects.all()
+    }
+    return render(request, 'shop.html', context)
+
+def viewPlayer(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "all_items": Item.objects.all()
+    }
+    return render(request, 'player_info.html', context)
 
 def logout(request):
     request.session.clear()

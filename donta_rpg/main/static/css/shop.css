@@ -5,6 +5,9 @@
     padding: 0;
     color: white;
 }
+body{
+    background-color: black;
+}
 li,
 a,
 button{
@@ -60,6 +63,9 @@ button:hover{
 }
 
 /* the Market */
+body{
+    background-color: black;
+}
 .market{
     font-family: 'Raleway', sans-serif;
     width: 1250px;
@@ -68,10 +74,8 @@ button:hover{
 }
 .profile {
     float: left;
-    background-color: #555555;
-    height: 1040px;
+    min-height: 1040px;
     width: 50%;
-    border-right: 1px solid gray;
 }
 .user-img{
     text-align: center;
@@ -108,6 +112,7 @@ button:hover{
 }
 .buy-gear h1{
     text-align: center;
+    margin-top: 10px;
 }
 hr{
     margin-left: 40px;
@@ -130,17 +135,17 @@ hr{
     margin-top: 5px;
 }
 .shop{
-    background-color: #555555;
     float: right;
-    height: 1040px;
+    min-height: 1040px;
     width: 50%;
 }
 
 .product{
     border-top: 1px solid gray;
     background-color: #242424;
+    border-radius: 10px;
     height: 105px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
     width: 100%;
     display: inline-block;

@@ -1,31 +1,5 @@
-<html>
-<head>
-    <title>Donta</title>
-    {% load static %}
-	<link rel="stylesheet" href="{% static 'css/game.css' %}"> 
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-</head>
-<body>
-	<div>
-		<div id='world'></div>
-		<div id = 'donta'></div>
-		<div id = 'score'>Score: <span id = 'score-count'>0</span></div>
-		<div id = 'droma1'></div>
-		<div id = 'droma2'></div>
-        <div id = 'droma3'></div>
-        <div id = 'droma4'></div>
-    </div>
-
-	<input type="hidden" id="existing_score" value="{{current_score}}">
-	{% csrf_token %}
-
-    <!-- GAME SCRIPT  -->
-
-    <script>
-
-
-		var total_berries = 35;
-		var generated_berries = 0;
+var total_berries = 35;
+	var generated_berries = 0;
 
     var world = [
         [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
@@ -47,15 +21,10 @@
 
 	// Generate Berries
 	while (generated_berries < total_berries){
-
 		for(var y = 0; y < world.length; y++) {
-
 			for(var x = 0; x < world[y].length; x++) {
-
 				if(world[y][x] == 0){
-
 					var chance_roll = Math.floor((Math.random() * 10) + 1);
-
 					if( chance_roll < 3){
 						world[y][x] = 1;
 						generated_berries++
@@ -88,7 +57,6 @@
 	// RENDER WORLD
 	function drawWorld() {
 		output = "";
-		
 		for(var row = 0; row < world.length; row++){
 			output += "<div class = 'row'></div>";
 			for(var i = 0; i < world[row].length; i++){
@@ -105,7 +73,6 @@
 		x: 1,
         y: 7,
 		health: 100
-		
 	}
 	
 	var dromaMovementDict = { 
@@ -203,7 +170,6 @@
         x: 11,
         y: 3,
 		health: 20
-		
 	}
 	var droma2 = {
         name: 'droma2',
@@ -228,45 +194,45 @@
 	// donta
 	function drawdonta_pos(){
 		document.getElementById('donta').style.top = 
-			donta_pos.y * 50 + 'px'
+			donta_pos.y * 40 + 'px'
 		document.getElementById('donta').style.left = 
-			donta_pos.x * 50 + 'px'
+			donta_pos.x * 40 + 'px'
     }
 	drawdonta_pos();		
 	
 	// droma1
 	function draw_droma1(){
 		document.getElementById('droma1').style.top = 
-            droma1.y * 50 + 'px'
+            droma1.y * 40 + 'px'
 		document.getElementById('droma1').style.left = 
-            droma1.x * 50 + 'px'
+            droma1.x * 40 + 'px'
 	}
 	draw_droma1();	
 	
 	// droma2	
 	function draw_droma2(){
 		document.getElementById('droma2').style.top = 
-            droma2.y * 50 + 'px'
+            droma2.y * 40 + 'px'
 		document.getElementById('droma2').style.left = 
-            droma2.x * 50 + 'px'
+            droma2.x * 40 + 'px'
 	}
 	draw_droma2();
 
 	// droma3	
 	function draw_droma3(){
 		document.getElementById('droma3').style.top = 
-            droma3.y * 50 + 'px'
+            droma3.y * 40 + 'px'
 		document.getElementById('droma3').style.left = 
-            droma3.x * 50 + 'px'
+            droma3.x * 40 + 'px'
 	}
 	draw_droma3();	
 	
 	// droma4	
 	function draw_droma4(){
 		document.getElementById('droma4').style.top = 
-            droma4.y * 50 + 'px'
+            droma4.y * 40 + 'px'
 		document.getElementById('droma4').style.left = 
-            droma4.x * 50 + 'px'
+            droma4.x * 40 + 'px'
 	}
 	draw_droma4();
 
@@ -282,7 +248,6 @@
 					donta_pos.x --;
 				} else {
                     var obstacleType = world[donta_pos.y][donta_pos.x - 1];
-
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
@@ -304,7 +269,6 @@
 					donta_pos.x ++;
 				} else {
                     var obstacleType = world[donta_pos.y][donta_pos.x + 1];
-
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
@@ -326,7 +290,6 @@
 					donta_pos.y --;
 				} else {
                     var obstacleType = world[donta_pos.y - 1][donta_pos.x];
-
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
@@ -349,7 +312,6 @@
 					donta_pos.y ++;
 				} else {
                     var obstacleType = world[donta_pos.y + 1][donta_pos.x];
-
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
@@ -372,7 +334,6 @@
 					donta_pos.y --;
 				} else {
                     var obstacleType = world[donta_pos.y - 1][donta_pos.x - 1];
-
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
@@ -384,7 +345,6 @@
                             // do nothing
                             break;
                     }
-
                 }
 				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
@@ -395,7 +355,6 @@
 					donta_pos.y --;
 				} else {
                     var obstacleType = world[donta_pos.y - 1][donta_pos.x + 1];
-
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
@@ -418,7 +377,6 @@
 					donta_pos.x --;			
 				} else {
                     var obstacleType = world[donta_pos.y + 1][donta_pos.x - 1 ];
-
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
@@ -441,7 +399,6 @@
 					donta_pos.x ++;
 				} else {
                     var obstacleType = world[donta_pos.y + 1][donta_pos.x + 1];
-
                     switch (obstacleType) {
                         // breakable rock
                         case 3:
@@ -466,7 +423,6 @@
 				continue;
 			}			
 			var move =  Math.floor((Math.random() * 7) + 1);
-			
 			while(!validMoves.includes(move)){
 				move =  Math.floor((Math.random() * 7) + 1);
 			}	
@@ -498,7 +454,6 @@
 	}
 	// UPDATE WORLD
 	document.onkeydown = function(e){		
-		
 		updateAgents(e);		
 		// Lives		
 		for(var i = 0; i < (dromaList.length); i++){
@@ -508,14 +463,11 @@
                 var player_dmg = Math.floor((Math.random() * 20) + 1)
                 // player can do between 0 and 20 damage
                 var enemy_damage = Math.floor((Math.random() * 20) + 1)
-
                 // do damage
                 donta_pos.health -= player_dmg;
                 currentDroma.health -= enemy_damage;
-
                 console.log("Player takes " + player_dmg + " damage! Player health: " + donta_pos.health);
                 console.log("Enemy takes " + enemy_damage + " damage! Enemy (" + currentDroma.name + ") health: " + currentDroma.health)
-
                 if (donta_pos.health <= 0) {
                     // player dead
 					alert("You failed the belt! Please try again!");
@@ -529,7 +481,6 @@
 							console.log(resp);
 						}
 					});
-
                     document.onkeydown = null;
                 }
 				console.log("Assignment Destroyed!");
@@ -537,9 +488,8 @@
                     // enemy dead, remove from list
                     document.getElementById(currentDroma.name).style.backgroundImage = 'none';
 					dromaList = dromaList.filter(droma => droma.name !== currentDroma.name);
-					gameScore += 50;
+					gameScore += 40;
                 }
-
 			}
 		}
 		
@@ -547,11 +497,9 @@
 		if((world[donta_pos.y][donta_pos.x]) == 1){
 			gameScore += 10;
 			generated_berries --;
-
 			console.log("Got help from George +10 Points!")
 		}
 		world[donta_pos.y][donta_pos.x] = 0;	
-
         // check to see if player won
         if (dromaList.length == 0 || generated_berries == 0){
             alert("Through the Power of George you have passed! BANANAS!!!!!")
@@ -570,13 +518,3 @@
 		drawWorld();
 		keepScore();
 	}
-
-
-	</script>
-	
-	<footer>
-		<a href="/dashboard">Return Home</a>
-	</footer>
-</body>
-
-</html>
