@@ -1,21 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@445&display=swap");
-
 body {
     margin: 0;
     padding: 0;
 }
-
 .row {
     line-height: 0;
 }
-
 .wall {
     background-color: rgb(144,123,38); 
     height: 50px;
     width: 50px;
     display: inline-block;
 }
-
 .breakable_rock {
     height: 50px;
     width: 50px;
@@ -24,7 +20,6 @@ body {
     background-color: rgb(75 109 73);
     background-size: contain;
 }
-
 .solid_rock {
     height: 50px;
     width: 50px;
@@ -33,7 +28,6 @@ body {
     background-color: rgb(75 109 73);
     background-size: contain;
 }	
-
 .fruit {
     height: 50px;
     width: 50px;
@@ -42,7 +36,6 @@ body {
     background-color: rgb(75 109 73);
     background-size: contain;
 }	
-
 .grass {
     background-color: rgb(13,9,10); 
     height: 50px;
@@ -50,7 +43,6 @@ body {
     display: inline-block;
     background-image: url("/static/images/grass_tile.png");
 }
-
 .dirt {
     background-color: rgb(13,9,10); 
     height: 50px;
@@ -58,7 +50,6 @@ body {
     display: inline-block;
     background-image: url("/static/images/dirt_tile.png");
 }
-
 #donta {
     height: 50px;
     width: 50px;
@@ -106,7 +97,6 @@ body {
     display: inline-block;
     clear: left;
 }
-
 #lives {
     background-color: rgb(13,9,10); 
     color:  rgb(133,68,45);
@@ -118,12 +108,8 @@ body {
     display: inline-block;
     clear: right;
 }
-#score-count{		
-}
-#life-count{
-}
-/* Weapon Select Popup end */
 
+/* Weapon Select Popup end */
 /* Brick Control Start */
 .body {
     background: url('../Images/grass_tile.png');
@@ -132,8 +118,6 @@ body {
 div#world {
     position: relative;
 }
-
-
 
 div.row div {
     width: 20px;
@@ -176,6 +160,3 @@ div#pacman {
     position: absolute;
 }
 /* Brick Control End */
-
-
-

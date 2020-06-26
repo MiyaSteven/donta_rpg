@@ -23,8 +23,9 @@
 
     <script>
 
-	var total_berries = 35;
-	var generated_berries = 0;
+
+		var total_berries = 35;
+		var generated_berries = 0;
 
     var world = [
         [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
@@ -59,13 +60,11 @@
 						world[y][x] = 1;
 						generated_berries++
 					}
-
 				}
 			}
 		}
 	}
 
-	
 	// WORLD DICTIONARY
 	var worldDict = {
 		0: 'grass',
@@ -158,7 +157,7 @@
 		6:	function(agent){
 				if(world[agent.y + 1][agent.x - 1 ] < 2){
 					agent.y ++;
-					agent.x --;		
+					agent.x --;
 					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_left_moving.gif')";	
 				}
 			},
@@ -289,10 +288,10 @@
                         case 3:
 							world[donta_pos.y][donta_pos.x - 1] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
-                            // do nothing
                             break;
                     }
                 }
@@ -311,8 +310,8 @@
                         case 3:
 							world[donta_pos.y][donta_pos.x + 1] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
-                        // solid rock
                         case 4: 
                             // do nothing
                             break;
@@ -333,6 +332,7 @@
                         case 3:
 							world[donta_pos.y - 1][donta_pos.x] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
@@ -355,6 +355,7 @@
                         case 3:
 							world[donta_pos.y + 1][donta_pos.x] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
@@ -383,7 +384,8 @@
                             // do nothing
                             break;
                     }
-				}
+
+                }
 				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
 			// UP & RIGHT 
@@ -399,13 +401,14 @@
                         case 3:
 							world[donta_pos.y - 1][donta_pos.x + 1] = 0;
 							gameScore += 20;
+							console.log("Completed Sensei Bonus +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
                             // do nothing
                             break;
                     }
-				}
+                }
 				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_right_walking.gif')";
 				break;
 			// DOWN & LEFT 
@@ -421,13 +424,14 @@
                         case 3:
 							world[donta_pos.y + 1][donta_pos.x - 1 ] = 0;
 							gameScore += 20;
+							console.log("Completed Assignment +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
                             // do nothing
                             break;
                     }
-				}
+                }
 				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
 			// DOWN & RIGHT
@@ -443,13 +447,14 @@
                         case 3:
 							world[donta_pos.y + 1][donta_pos.x + 1] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
                             // do nothing
                             break;
                     }
-				}
+                }
 				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_right_walking.gif')";
 				break;
 		}		
@@ -513,7 +518,7 @@
 
                 if (donta_pos.health <= 0) {
                     // player dead
-					alert("You are dead! You lose!");
+					alert("You failed the belt! Please try again!");
 					
 					$.ajax({
 						url:"/submit-score",
@@ -527,7 +532,7 @@
 
                     document.onkeydown = null;
                 }
-
+				console.log("Assignment Destroyed!");
                 if (currentDroma.health <= 0) {
                     // enemy dead, remove from list
                     document.getElementById(currentDroma.name).style.backgroundImage = 'none';
@@ -542,6 +547,8 @@
 		if((world[donta_pos.y][donta_pos.x]) == 1){
 			gameScore += 10;
 			generated_berries --;
+
+			console.log("Got help from George +10 Points!")
 		}
 		world[donta_pos.y][donta_pos.x] = 0;	
 
@@ -558,8 +565,7 @@
 						console.log(resp);
 					}
 				});
-        }
-		
+      }
 		drawdonta_pos();
 		drawWorld();
 		keepScore();

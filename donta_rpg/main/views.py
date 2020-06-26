@@ -109,12 +109,10 @@ def select(request):
     return render(request, "select.html", context)
 
 def edit(request):
-    request.session['job_id'] = request.POST['job_id']
     if 'user_id' not in request.session:
         return redirect('/')
     context = {
         "user": User.objects.get(id=request.session['user_id']),
-        "job": Job.objects.get(id=request.session['job_id'])
     }
     return render(request, 'edit.html', context)
 
