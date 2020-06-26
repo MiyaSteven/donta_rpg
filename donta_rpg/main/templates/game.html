@@ -23,6 +23,7 @@
 
     <script>
 
+
 		var total_berries = 35;
 		var generated_berries = 0;
 
@@ -103,7 +104,8 @@
 	var donta_pos = {
 		x: 1,
         y: 7,
-        health: 100
+		health: 100
+		
 	}
 	
 	var dromaMovementDict = { 
@@ -140,7 +142,7 @@
 				if(world[agent.y - 1][agent.x - 1] < 2){
 					agent.x --;
 					agent.y --;
-					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_right_moving.gif')";
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_left_moving.gif')";
 				}
 			},
 		// UP & RIGHT
@@ -200,7 +202,8 @@
         name: 'droma1',
         x: 11,
         y: 3,
-        health: 20
+		health: 20
+		
 	}
 	var droma2 = {
         name: 'droma2',
@@ -381,6 +384,7 @@
                             // do nothing
                             break;
                     }
+
                 }
 				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
@@ -543,6 +547,7 @@
 		if((world[donta_pos.y][donta_pos.x]) == 1){
 			gameScore += 10;
 			generated_berries --;
+
 			console.log("Got help from George +10 Points!")
 		}
 		world[donta_pos.y][donta_pos.x] = 0;	
@@ -560,15 +565,18 @@
 						console.log(resp);
 					}
 				});
-        }
-
+      }
 		drawdonta_pos();
 		drawWorld();
 		keepScore();
 	}
+
+
 	</script>
+	
+	<footer>
+		<a href="/dashboard">Return Home</a>
+	</footer>
 </body>
-<footer>
-	<a href="/dashboard">Return Home</a>
-</footer>
+
 </html>
