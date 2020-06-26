@@ -123,7 +123,8 @@ def game(request):
     current_user = User.objects.get(id=request.session['user_id'])
 
     context = {
-        'current_score': current_user.score
+        'current_score': current_user.score,
+        'all_characters': Character.objects.all(),
     }
     
     return render(request, 'game.html', context)
