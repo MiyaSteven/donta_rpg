@@ -23,25 +23,47 @@
 
     <script>
 
+		var total_berries = 35;
+		var generated_berries = 0;
+
     var world = [
         [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
 		[4, 0, 3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 4],
-		[4, 0, 4, 4, 4, 4, 0, 0, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4],
+		[4, 0, 4, 4, 4, 4, 0, 0, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4],
 		[4, 0, 4, 4, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 4, 4, 4],
-        [4, 0, 4, 4, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 4, 1, 4],
+        [4, 0, 4, 4, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 4],
 		[4, 0, 4, 4, 0, 3, 0, 0, 4, 0, 0, 0, 4, 0, 4, 0, 4, 0, 4, 4, 4, 4, 4, 0, 0, 4, 3, 4],
         [4, 0, 4, 4, 0, 4, 0, 0, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 3, 4],
-        [4, 0, 4, 4, 0, 4, 4, 4, 4, 1, 4, 0, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 3, 0, 4],
-        [4, 0, 4, 4, 3, 4, 1, 4, 4, 4, 4, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 3, 4, 4, 3, 4],
+        [4, 0, 4, 4, 0, 4, 4, 4, 4, 0, 4, 0, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 3, 0, 4],
+        [4, 0, 4, 4, 3, 4, 0, 4, 4, 4, 4, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 3, 4, 4, 3, 4],
         [4, 0, 4, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 4, 3, 4],
-        [4, 0, 4, 1, 1, 4, 0, 4, 4, 4, 4, 3, 4, 4, 4, 4, 0, 4, 0, 0, 0, 4, 4, 0, 0, 4, 1, 4],
-        [4, 0, 4, 4, 4, 4, 0, 4, 1, 0, 3, 3, 3, 0, 1, 4, 0, 4, 0, 4, 0, 4, 4, 0, 0, 4, 4, 4],
-        [4, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 0, 4, 4, 4, 4, 4, 1, 4],
-        [4, 0, 3, 0, 0, 0, 0, 4, 1, 0, 1, 0, 0, 0, 3, 0, 3, 0, 3, 4, 0, 3, 0, 3, 0, 1, 1, 4],
+        [4, 0, 4, 0, 0, 4, 0, 4, 4, 4, 4, 3, 4, 4, 4, 4, 0, 4, 0, 0, 0, 4, 4, 0, 0, 4, 0, 4],
+        [4, 0, 4, 4, 4, 4, 0, 4, 0, 0, 3, 3, 3, 0, 0, 4, 0, 4, 0, 4, 0, 4, 4, 0, 0, 4, 4, 4],
+        [4, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 0, 4, 4, 4, 4, 4, 0, 4],
+        [4, 0, 3, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 3, 4, 0, 3, 0, 3, 0, 0, 0, 4],
 		[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
 	];
 
-	
+	// Generate Berries
+	while (generated_berries < total_berries){
+
+		for(var y = 0; y < world.length; y++) {
+
+			for(var x = 0; x < world[y].length; x++) {
+
+				if(world[y][x] == 0){
+
+					var chance_roll = Math.floor((Math.random() * 10) + 1);
+
+					if( chance_roll < 3){
+						world[y][x] = 1;
+						generated_berries++
+					}
+				}
+			}
+		}
+	}
+
 	// WORLD DICTIONARY
 	var worldDict = {
 		0: 'grass',
@@ -89,24 +111,28 @@
 		0: function(agent){
 			if(world[agent.y][agent.x - 1] < 2){
 				agent.x --;
+				document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_left_moving.gif')";
 				}
 			},
 		// RIGHT
 		1:	function(agent){
 				if(world[agent.y][agent.x + 1] < 2){
 					agent.x ++;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_right_moving.gif')";
 				}
 			},
 		// UP
 		2:	function(agent){
 				if(world[agent.y - 1][agent.x] < 2){
 					agent.y --;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_back_moving.gif')";
 				}
 			},
 		// DOWN
 		3:	function(agent){
 				if(world[agent.y + 1][agent.x] < 2){
 					agent.y ++;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_front_moving.gif')";
 				}
 			},
 		// UP & LEFT
@@ -114,6 +140,7 @@
 				if(world[agent.y - 1][agent.x - 1] < 2){
 					agent.x --;
 					agent.y --;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_right_moving.gif')";
 				}
 			},
 		// UP & RIGHT
@@ -121,13 +148,15 @@
 				if(world[agent.y - 1][agent.x + 1] < 2){
 					agent.x ++;
 					agent.y --;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_right_moving.gif')";
 				}
 			},
 		// DOWN & LEFT
 		6:	function(agent){
 				if(world[agent.y + 1][agent.x - 1 ] < 2){
 					agent.y ++;
-					agent.x --;			
+					agent.x --;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_left_moving.gif')";	
 				}
 			},
 		// DOWN & RIGHT
@@ -135,6 +164,7 @@
 				if(world[agent.y + 1][agent.x + 1] < 2){
 					agent.y ++;
 					agent.x ++;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_right_moving.gif')";
 				}
 			}
 	}
@@ -255,14 +285,14 @@
                         case 3:
 							world[donta_pos.y][donta_pos.x - 1] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
-                            // do nothing
                             break;
                     }
                 }
-                document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite/donta_left_stand.png')";
+                document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
 			// RIGHT
 			case 39:
@@ -277,14 +307,14 @@
                         case 3:
 							world[donta_pos.y][donta_pos.x + 1] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
-                        // solid rock
                         case 4: 
                             // do nothing
                             break;
                     }
                 }
-				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite/donta_right_stand.png')";
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_right_walking.gif')";
 				break;
 			// UP
 			case 38:
@@ -299,6 +329,7 @@
                         case 3:
 							world[donta_pos.y - 1][donta_pos.x] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
@@ -306,7 +337,7 @@
                             break;
                     }
                 }
-				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite/donta_back_stand.png')";
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_back_walking.gif')";
 				break;
 			// DOWN
 			case 40:
@@ -321,6 +352,7 @@
                         case 3:
 							world[donta_pos.y + 1][donta_pos.x] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
@@ -328,7 +360,7 @@
                             break;
                     }
                 }
-				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite/donta_front_stand.png')";
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_front_walking.gif')";
 				break;			
 			// UP & LEFT
 			case 103:
@@ -350,6 +382,7 @@
                             break;
                     }
                 }
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
 			// UP & RIGHT 
 			case 105:
@@ -364,6 +397,7 @@
                         case 3:
 							world[donta_pos.y - 1][donta_pos.x + 1] = 0;
 							gameScore += 20;
+							console.log("Completed Sensei Bonus +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
@@ -371,6 +405,7 @@
                             break;
                     }
                 }
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_right_walking.gif')";
 				break;
 			// DOWN & LEFT 
 			case 97:
@@ -385,6 +420,7 @@
                         case 3:
 							world[donta_pos.y + 1][donta_pos.x - 1 ] = 0;
 							gameScore += 20;
+							console.log("Completed Assignment +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
@@ -392,6 +428,7 @@
                             break;
                     }
                 }
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
 			// DOWN & RIGHT
 			case 99:
@@ -406,6 +443,7 @@
                         case 3:
 							world[donta_pos.y + 1][donta_pos.x + 1] = 0;
 							gameScore += 20;
+							console.log("Broke through Code Blocker +20 Points!!");
                             break;
                         // solid rock
                         case 4: 
@@ -413,6 +451,7 @@
                             break;
                     }
                 }
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_right_walking.gif')";
 				break;
 		}		
 		// enemy movement
@@ -475,7 +514,7 @@
 
                 if (donta_pos.health <= 0) {
                     // player dead
-					alert("You are dead! You lose!");
+					alert("You failed the belt! Please try again!");
 					
 					$.ajax({
 						url:"/submit-score",
@@ -489,7 +528,7 @@
 
                     document.onkeydown = null;
                 }
-
+				console.log("Assignment Destroyed!");
                 if (currentDroma.health <= 0) {
                     // enemy dead, remove from list
                     document.getElementById(currentDroma.name).style.backgroundImage = 'none';
@@ -503,11 +542,13 @@
 		// score
 		if((world[donta_pos.y][donta_pos.x]) == 1){
 			gameScore += 10;
+			generated_berries --;
+			console.log("Got help from George +10 Points!")
 		}
 		world[donta_pos.y][donta_pos.x] = 0;	
 
         // check to see if player won
-        if (dromaList.length == 0) {
+        if (dromaList.length == 0 || generated_berries == 0){
             alert("You win!")
 			document.onkeydown = null;
 			$.ajax({
@@ -520,9 +561,6 @@
 					}
 				});
         }
-
-
-		world[donta_pos.y][donta_pos.x] = 0;		
 
 		drawdonta_pos();
 		drawWorld();
