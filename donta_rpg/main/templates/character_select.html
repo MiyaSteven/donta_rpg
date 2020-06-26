@@ -11,48 +11,32 @@
 <body>
     <main>
         <div>
-            <form action="/character_select">
+            <form action="/game">
                 {% csrf_token %}
                 <h1>Character Select</h1>
                 <hr>
                 <div class="row ">
+                    {% for character in all_characters %}
                     <label class="col-sm">
                         <input type="radio" name="test" value="small" checked>
-                        <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
+                        <img src="{{character.link}}" alt="" height="50px" width="50px">
+                        <button type="submit">Select Character</button>
                     </label>
-                    <!-- <label class="col-sm">
-                        <input type="radio" name="test" value="big">
-                        <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
-                    </label>
-                    <label class="col-sm">
-                        <input type="radio" name="test" value="big">
-                        <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
-                    </label>
-                    <label class="col-sm">
-                        <input type="radio" name="test" value="big">
-                        <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
-                    </label>
+                    {% endfor %}
                 </div>
+            </form>
+            <form action="/game">
+                {% csrf_token %}
+                <h1>Character Select</h1>
+                <hr>
                 <div class="row ">
+                    {% for character in all_characters %}
                     <label class="col-sm">
-                        <input type="radio" name="test" value="big">
-                        <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
+                        <input type="radio" name="test" value="small" checked>
+                        <img src="{{character.link}}" alt="" height="50px" width="50px">
+                        <button type="submit">Select Character</button>
                     </label>
-                    <label class="col-sm">
-                        <input type="radio" name="test" value="big">
-                        <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
-                    </label>
-                    <label class="col-sm">
-                        <input type="radio" name="test" value="big">
-                        <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
-                    </label>
-                    <label class="col-sm">
-                        <input type="radio" name="test" value="big">
-                        <img src="../static/Images/user_sprite/donta_front_stand.png" alt="">
-                    </label>
-                </div> -->
-                <div class="center">
-                    <button type="submit">Select Character</button>
+                    {% endfor %}
                 </div>
             </form>
         </div>

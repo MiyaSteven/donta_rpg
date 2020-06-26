@@ -18,10 +18,6 @@
                     <a class="cta" href="/character"><button>Character Select</button></a>
                 </li>
                 <li> 
-<<<<<<< HEAD
-=======
-                    <!-- this is extra since we are on dashboard page-->
->>>>>>> 3df0253b326bb4a07c537cb15a673cd4babcdbd8
                     <a class="cta" href="/chosen"><button class="select">Create Pieces</button></a>
                 </li>
                 <li>
@@ -39,6 +35,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Attack</th>
                         <th>Health</th>
@@ -48,6 +45,9 @@
                 <tbody>
                     {% for character in all_characters %}
                     <tr>
+                        <th>
+                            <img src="{{character.link}}" alt="" height="50px" width="50px">
+                        </th>
                         <th>{{character.name}}</th>
                         <th>{{character.attack}}</th>
                         <th>{{character.health}}</th>
@@ -60,6 +60,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Attack</th>
                         <th>Health</th>
@@ -69,6 +70,9 @@
                 <tbody>
                     {% for item in all_items %}
                     <tr>
+                        <th>
+                            <img src="{{item.link}}" alt="" height="50px" width="50px">
+                        </th>
                         <th>{{item.item_name}}</th>
                         <th>{{item.attack}}</th>
                         <th>{{item.health}}</th>
