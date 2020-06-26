@@ -73,6 +73,7 @@ def chosen_create_item(request):
         attack=request.POST['attack'],
         health=request.POST['health'],
         special_ability=request.POST['special_ability'],
+        link=request.POST['link'],
         character=character,
     )
     request.session['item_id'] = this_item.id
@@ -83,6 +84,7 @@ def chosen_create_obstacle(request):
     Obstacle.objects.create(
         obstacle_name=request.POST['obstacle_name'],
         health=request.POST['health'],
+        link=request.POST['link'],
         item=item,
     )
     return redirect('/dashboard')
@@ -94,6 +96,7 @@ def chosen_create_enemy(request):
         attack=request.POST['attack'],
         health=request.POST['health'],
         ability=request.POST['ability'],
+        link=request.POST['link'],
     )
     return redirect('/dashboard')
 
@@ -105,11 +108,6 @@ def select(request):
     }
     return render(request, "select.html", context)
 
-# def get_character(request, character_id):
-#     character = Character.get(id=character_id)
-
-#     return render(request, '')
-
 def edit(request):
     request.session['job_id'] = request.POST['job_id']
     if 'user_id' not in request.session:
@@ -119,8 +117,6 @@ def edit(request):
         "job": Job.objects.get(id=request.session['job_id'])
     }
     return render(request, 'edit.html', context)
-
-# test code to view Other Pages
 
 def game(request):
     if not request.session['user_id']:
@@ -136,26 +132,36 @@ def game(request):
 
 def submit_score(request):
     current_user = User.objects.get(id=request.session['user_id'])
-
     new_score = request.POST['score']
-
     current_user.score = new_score
-
     current_user.save()
-
     return JsonResponse({'code':200})
 
 def boss(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
     return render(request, 'boss.html')
 
 def main_game(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
     return render(request, 'game2.html')
     
 def character_select(request):
-    return render(request, 'character_select.html')
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "all_characters": Character.objects.all(),
+    }
+    return render(request, 'character_select.html', context)
 
 def shop(request):
-    return render(request, 'shop.html')
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "all_items": Item.objects.all()
+    }
+    return render(request, 'shop.html', context)
 
 def logout(request):
     request.session.clear()
