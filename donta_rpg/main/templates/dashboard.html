@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     {% load static %}
-    <link type="text/css" rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/dashboards.css' %}">
 </head>
 <body style="background-color:black">
     <header>
@@ -21,7 +21,7 @@
                     <a class="cta" href="/chosen"><button class="select">Create Pieces</button></a>
                 </li>
                 <li>
-                    <a class="cta" href="/game"><button>Return to Game</button></a>
+                    <a class="cta" href="/gamePlay"><button>Return to Game</button></a>
                 </li>
                 <li>
                     <a class="cta" href="/logout"><button>Logout</button></a>
@@ -35,7 +35,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Attack</th>
                         <th>Health</th>
@@ -46,7 +46,7 @@
                     {% for character in all_characters %}
                     <tr>
                         <th>
-                            <img src="{{character.link}}" alt="" height="50px" width="50px">
+                            <img src="{{character.link}}" alt="" style="max-height:50px; max-width:50px;">
                         </th>
                         <th>{{character.name}}</th>
                         <th>{{character.attack}}</th>
@@ -60,7 +60,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Attack</th>
                         <th>Health</th>
@@ -82,7 +82,7 @@
             </tbody>
             </table>
             <div class="link">
-                <a href="/character/{{character.id}}"><button> View</button></a>
+                <a href="/character"><button> View</button></a>
             </div>
         </div>
 </body>

@@ -32,7 +32,7 @@ body {
     height: 50px;
     width: 50px;
     display: inline-block;
-    background-image: url("/static/images/fruit.png");
+    background-image: url("../Images/George.png");
     background-color: rgb(75 109 73);
     background-size: contain;
 }	

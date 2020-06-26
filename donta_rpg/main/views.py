@@ -138,7 +138,10 @@ def submit_score(request):
 def boss(request):
     if 'user_id' not in request.session:
         return redirect('/')
-    return render(request, 'boss.html')
+    context = {
+        "user": User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'boss.html', context)
 
 def main_game(request):
     if 'user_id' not in request.session:
@@ -160,6 +163,14 @@ def shop(request):
         "all_items": Item.objects.all()
     }
     return render(request, 'shop.html', context)
+
+def viewPlayer(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    context = {
+        "all_items": Item.objects.all()
+    }
+    return render(request, 'player_info.html', context)
 
 def logout(request):
     request.session.clear()

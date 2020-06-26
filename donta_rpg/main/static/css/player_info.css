@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
 *{
     box-sizing: border-box;
+    color: white;
     margin: 0;
     padding: 0;
 }
@@ -22,6 +23,7 @@ header{
     padding: 30px 10%;
 }
 body{
+    background-color: black;
     color: white;
 }
 .nav_links{
@@ -65,13 +67,13 @@ button:hover{
 /* player Info start */
 .the-player{
     font-family: 'Raleway', sans-serif;
-    background-color: #555555;
     width: 1250px;
     margin-left: auto;
     margin-right: auto;
 }
 /* left box start*/
 .status {
+    background-color: black;
     float: left;
     height: 800px;
     width: 50%;
@@ -112,7 +114,8 @@ button:hover{
 }
 /* weapons box end */
 .gear{
-    border:1px solid gray;
+    border:1px solid rgb(167, 143, 143);
+    background-color: black;
     border-radius: 10px;
     margin-left: 10px;
     padding-top: 10px;
