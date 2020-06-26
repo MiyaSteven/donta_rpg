@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hero Status</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/stats.css' %}">
+    <link rel="stylesheet" href="{% static 'css/player_info.css' %}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/stats.css">
 </head>
-<body>
+<body style="background-color: black;">
     <header>
         <nav>
             <ul class="nav_links">
@@ -20,10 +19,10 @@
                     <a class="cta" href="/character"><button>Player Select</button></a>
                 </li>
                 <li>
-                    <a class="cta" href="/player"><button class="select">Hero Status</button></a>
+                    <a class="cta" href="/viewPlayer"><button class="select">Hero Status</button></a>
                 </li>
                 <li>
-                    <a class="cta" href="/main-game"><button>Return to Game</button></a>
+                    <a class="cta" href="/gamePlay"><button>Return to Game</button></a>
                 </li>
                 <li>
                     <a class="cta" href="/logout"><button>Logout</button></a>
@@ -31,7 +30,7 @@
             </ul>
         </nav>
     </header>
-    <div class="the-player">
+    <div class="the-player" style="background-color: black; color: white;">
         <form action="">
             <!-- info box -->
             <div class="status">
@@ -50,10 +49,10 @@
                     <!-- selected Wapon -->
                     <div class="picked-gear">
                         <div class="main-img">
-                            <img src="../static/Images/user_sprite/donta_front_pickup.png" alt="">
-                            <h1>NAME</h1>
+                            <img src="../static/Images/alien.png" alt="">
+                            <h1>XenoMorph</h1>
                             <h3>Power</h3>
-                            <p>205</p>
+                            <p>1200</p>
                         </div>
                     </div>
                     <!-- waepon select -->
@@ -61,45 +60,45 @@
                         <div class="row ">
                             <label class="col-sm">
                                 <input type="radio" name="test" value="small" checked>
-                                <img src="../static/Images/scythe.png" alt="">
-                                <p>Weapon</p>
+                                <img src="../static/Images/driodgun.webp" alt="">
+                                <p>Blaster</p>
                             </label>
                             <label class="col-sm">
                                 <input type="radio" name="test" value="big">
-                                <img src="../static/Images/pacman.gif" alt="">
-                                <p>Weapon</p>
+                                <img src="../static/Images/rpg.png" alt="">
+                                <p>RPG</p>
                             </label>
                             <label class="col-sm">
                                 <input type="radio" name="test" value="big">
-                                <img src="../static/Images/scythe.png" alt="">
-                                <p>Weapon</p>
+                                <img src="../static/Images/machinegun.png" alt="">
+                                <p>Machine Gun</p>
                             </label>
                             <label class="col-sm">
                                 <input type="radio" name="test" value="big">
-                                <img src="../static/Images/pacman.gif" alt="">
-                                <p>Weapon</p>
+                                <img src="../static/Images/hulkbuster.png" alt="">
+                                <p>Hulk Buster</p>
                             </label>
                         </div>
                         <div class="row ">
                             <label class="col-sm">
                                 <input type="radio" name="test" value="big">
-                                <img src="../static/Images/pacman.gif" alt="">
-                                <p>Weapon</p>
+                                <img src="../static/Images/child-support.png" alt="">
+                                <p>Child Support</p>
                             </label>
                             <label class="col-sm">
                                 <input type="radio" name="test" value="big">
-                                <img src="../static/Images/scythe.png" alt="">
-                                <p>Weapon</p>
+                                <img src="../static/Images/sword.png" alt="">
+                                <p>Sword</p>
                             </label>
                             <label class="col-sm">
                                 <input type="radio" name="test" value="big">
-                                <img src="../static/Images/pacman.gif" alt="">
-                                <p>Weapon</p>
+                                <img src="../static/Images/aztec.webp" alt="">
+                                <p>Aztec Sword</p>
                             </label>
                             <label class="col-sm">
                                 <input type="radio" name="test" value="big">
-                                <img src="../static/Images/scythe.png" alt="">
-                                <p>Weapon</p>
+                                <img src="../static/Images/tank.png" alt="">
+                                <p>Military Tank</p>
                             </label>
                         </div>
                     </div>
@@ -116,19 +115,19 @@
                 <div class="stats row">
                     <div class="abilities col-sm">
                         <h4>Health</h4>
-                        <p>Power</p>
+                        <p>44,550</p>
                     </div>
                     <div class="abilities col-sm">
-                        <h4>Health</h4>
-                        <p>Power</p>
+                        <h4>Attack</h4>
+                        <p>9,000</p>
                     </div>
                     <div class="abilities col-sm">
-                        <h4>Health</h4>
-                        <p>Power</p>
+                        <h4>Defense</h4>
+                        <p>18,000</p>
                     </div>
                     <div class="abilities col-sm">
-                        <h4>Health</h4>
-                        <p>Power</p>
+                        <h4>Coins</h4>
+                        <p>1,240</p>
                     </div>
                 </div>
             </div>
