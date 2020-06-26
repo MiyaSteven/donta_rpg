@@ -23,23 +23,47 @@
 
     <script>
 
+	var total_berries = 35;
+	var generated_berries = 0;
+
     var world = [
         [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
 		[4, 0, 3, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 4],
-		[4, 0, 4, 4, 4, 4, 0, 0, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4],
+		[4, 0, 4, 4, 4, 4, 0, 0, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4],
 		[4, 0, 4, 4, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 4, 4, 4],
-        [4, 0, 4, 4, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 4, 1, 4],
+        [4, 0, 4, 4, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 4],
 		[4, 0, 4, 4, 0, 3, 0, 0, 4, 0, 0, 0, 4, 0, 4, 0, 4, 0, 4, 4, 4, 4, 4, 0, 0, 4, 3, 4],
         [4, 0, 4, 4, 0, 4, 0, 0, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 3, 4],
-        [4, 0, 4, 4, 0, 4, 4, 4, 4, 1, 4, 0, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 3, 0, 4],
-        [4, 0, 4, 4, 3, 4, 1, 4, 4, 4, 4, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 3, 4, 4, 3, 4],
+        [4, 0, 4, 4, 0, 4, 4, 4, 4, 0, 4, 0, 4, 0, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 3, 0, 4],
+        [4, 0, 4, 4, 3, 4, 0, 4, 4, 4, 4, 0, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 3, 4, 4, 3, 4],
         [4, 0, 4, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 0, 4, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 4, 3, 4],
-        [4, 0, 4, 1, 1, 4, 0, 4, 4, 4, 4, 3, 4, 4, 4, 4, 0, 4, 0, 0, 0, 4, 4, 0, 0, 4, 1, 4],
-        [4, 0, 4, 4, 4, 4, 0, 4, 1, 0, 3, 3, 3, 0, 1, 4, 0, 4, 0, 4, 0, 4, 4, 0, 0, 4, 4, 4],
-        [4, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 0, 4, 4, 4, 4, 4, 1, 4],
-        [4, 0, 3, 0, 0, 0, 0, 4, 1, 0, 1, 0, 0, 0, 3, 0, 3, 0, 3, 4, 0, 3, 0, 3, 0, 1, 1, 4],
+        [4, 0, 4, 0, 0, 4, 0, 4, 4, 4, 4, 3, 4, 4, 4, 4, 0, 4, 0, 0, 0, 4, 4, 0, 0, 4, 0, 4],
+        [4, 0, 4, 4, 4, 4, 0, 4, 0, 0, 3, 3, 3, 0, 0, 4, 0, 4, 0, 4, 0, 4, 4, 0, 0, 4, 4, 4],
+        [4, 0, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4, 0, 4, 0, 4, 4, 4, 4, 4, 0, 4],
+        [4, 0, 3, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 3, 4, 0, 3, 0, 3, 0, 0, 0, 4],
 		[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
 	];
+
+	// Generate Berries
+	while (generated_berries < total_berries){
+
+		for(var y = 0; y < world.length; y++) {
+
+			for(var x = 0; x < world[y].length; x++) {
+
+				if(world[y][x] == 0){
+
+					var chance_roll = Math.floor((Math.random() * 10) + 1);
+
+					if( chance_roll < 3){
+						world[y][x] = 1;
+						generated_berries++
+					}
+
+				}
+			}
+		}
+	}
 
 	
 	// WORLD DICTIONARY
@@ -81,7 +105,8 @@
 	var donta_pos = {
 		x: 1,
         y: 7,
-        health: 100
+		health: 100
+		
 	}
 	
 	var dromaMovementDict = { 
@@ -89,24 +114,28 @@
 		0: function(agent){
 			if(world[agent.y][agent.x - 1] < 2){
 				agent.x --;
+				document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_left_moving.gif')";
 				}
 			},
 		// RIGHT
 		1:	function(agent){
 				if(world[agent.y][agent.x + 1] < 2){
 					agent.x ++;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_right_moving.gif')";
 				}
 			},
 		// UP
 		2:	function(agent){
 				if(world[agent.y - 1][agent.x] < 2){
 					agent.y --;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_back_moving.gif')";
 				}
 			},
 		// DOWN
 		3:	function(agent){
 				if(world[agent.y + 1][agent.x] < 2){
 					agent.y ++;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_front_moving.gif')";
 				}
 			},
 		// UP & LEFT
@@ -114,6 +143,7 @@
 				if(world[agent.y - 1][agent.x - 1] < 2){
 					agent.x --;
 					agent.y --;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_left_moving.gif')";
 				}
 			},
 		// UP & RIGHT
@@ -121,13 +151,15 @@
 				if(world[agent.y - 1][agent.x + 1] < 2){
 					agent.x ++;
 					agent.y --;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_right_moving.gif')";
 				}
 			},
 		// DOWN & LEFT
 		6:	function(agent){
 				if(world[agent.y + 1][agent.x - 1 ] < 2){
 					agent.y ++;
-					agent.x --;			
+					agent.x --;		
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_left_moving.gif')";	
 				}
 			},
 		// DOWN & RIGHT
@@ -135,6 +167,7 @@
 				if(world[agent.y + 1][agent.x + 1] < 2){
 					agent.y ++;
 					agent.x ++;
+					document.getElementById(agent.name).style.backgroundImage = "url('/static/images/enemy_sprite_moving/enemy_right_moving.gif')";
 				}
 			}
 	}
@@ -170,7 +203,8 @@
         name: 'droma1',
         x: 11,
         y: 3,
-        health: 20
+		health: 20
+		
 	}
 	var droma2 = {
         name: 'droma2',
@@ -262,7 +296,7 @@
                             break;
                     }
                 }
-                document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite/donta_left_stand.png')";
+                document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
 			// RIGHT
 			case 39:
@@ -284,7 +318,7 @@
                             break;
                     }
                 }
-				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite/donta_right_stand.png')";
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_right_walking.gif')";
 				break;
 			// UP
 			case 38:
@@ -306,7 +340,7 @@
                             break;
                     }
                 }
-				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite/donta_back_stand.png')";
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_back_walking.gif')";
 				break;
 			// DOWN
 			case 40:
@@ -328,7 +362,7 @@
                             break;
                     }
                 }
-				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite/donta_front_stand.png')";
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_front_walking.gif')";
 				break;			
 			// UP & LEFT
 			case 103:
@@ -349,7 +383,8 @@
                             // do nothing
                             break;
                     }
-                }
+				}
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
 			// UP & RIGHT 
 			case 105:
@@ -370,7 +405,8 @@
                             // do nothing
                             break;
                     }
-                }
+				}
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_right_walking.gif')";
 				break;
 			// DOWN & LEFT 
 			case 97:
@@ -391,7 +427,8 @@
                             // do nothing
                             break;
                     }
-                }
+				}
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_left_walking.gif')";
 				break;
 			// DOWN & RIGHT
 			case 99:
@@ -412,7 +449,8 @@
                             // do nothing
                             break;
                     }
-                }
+				}
+				document.getElementById('donta').style.backgroundImage = "url('/static/images/user_sprite_moving/donta_right_walking.gif')";
 				break;
 		}		
 		// enemy movement
@@ -503,11 +541,12 @@
 		// score
 		if((world[donta_pos.y][donta_pos.x]) == 1){
 			gameScore += 10;
+			generated_berries --;
 		}
 		world[donta_pos.y][donta_pos.x] = 0;	
 
         // check to see if player won
-        if (dromaList.length == 0) {
+        if (dromaList.length == 0 || generated_berries == 0){
             alert("You win!")
 			document.onkeydown = null;
 			$.ajax({
@@ -520,17 +559,18 @@
 					}
 				});
         }
-
-
-		world[donta_pos.y][donta_pos.x] = 0;		
-
+		
 		drawdonta_pos();
 		drawWorld();
 		keepScore();
 	}
+
+
 	</script>
+	
+	<footer>
+		<a href="/dashboard">Return Home</a>
+	</footer>
 </body>
-<footer>
-	<a href="/dashboard">Return Home</a>
-</footer>
+
 </html>

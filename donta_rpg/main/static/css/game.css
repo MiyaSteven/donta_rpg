@@ -63,35 +63,35 @@ body {
     height: 50px;
     width: 50px;
     position: absolute;
-    background-image: url("/static/images/user_sprite/donta_front_walk.png");
+    background-image: url("/static/images/user_sprite_moving/donta_front_walking.gif");
 }
 
 #droma1 {
     height: 50px;
     width: 50px;
     position: absolute;
-    background-image: url("/static/images/enemy_sprite/enemy_front_walk.png");
+    background-image: url("/static/images/enemy_sprite_moving/enemy_front_moving.gif");
 }
 
 #droma2 {
     height: 50px;
     width: 50px;
     position: absolute;
-    background-image: url("/static/images/enemy_sprite/enemy_front_walk.png");
+    background-image:  url("/static/images/enemy_sprite_moving/enemy_front_moving.gif");
 }
 
 #droma3 {
     height: 50px;
     width: 50px;
     position: absolute;
-    background-image: url("/static/images/enemy_sprite/enemy_front_walk.png");
+    background-image:  url("/static/images/enemy_sprite_moving/enemy_front_moving.gif");
 }
 
 #droma4 {
     height: 50px;
     width: 50px;
     position: absolute;
-    background-image: url("/static/images/enemy_sprite/enemy_front_walk.png");
+    background-image:  url("/static/images/enemy_sprite_moving/enemy_front_moving.gif");
 }
 
 
@@ -133,10 +133,7 @@ div#world {
     position: relative;
 }
 
-/* 
-div.row {
-    height: 20px;
-} */
+
 
 div.row div {
     width: 20px;
